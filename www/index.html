@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scheduler</title>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://aarnekyppo.com/scheduler* ">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel='stylesheet' href='lib/bootstrap/dist/css/bootstrap.min.css'/>
+        <link rel='stylesheet' href='lib/bootstrap/dist/css/bootstrap-theme.min.css'/>
+        <link rel='stylesheet' href='css/style.css'></link>
+    </head>
+    <body ng-controller='LessonsController as lessonsctrl'>
+
+        <h1>Scheduler</h1>
+        <div id='aboutapp' class='panel-group' role='tablist' aria-multiselectable='true'>
+            <div class='panel panel-default'>
+                <div id='aboutappheading' class='panel-heading' role='tab'>
+                    <h4 class=̈́'panel-title'>
+                        <a data-toggle='collapse' data-parent='#aboutapp' href='#aboutappbody' aria-expanded='true' aria-controls='aboutappbody'>About application</a>
+                    </h4>
+                </div>
+                <div id='aboutappbody' class='panel-collapse collapse'>
+                    <div class='panel-body'>
+                        <p>This is timetable application for Lapland UAS. This is only development version.</p>
+                        <p>For convenience of majority of students, all locales are in finnish format(adding new languages and locales would be nice, but not top priority).</p>
+                        <p>Currently it only shows lessons of current day. There is also JSON API for lessons. There is no documentation for that. You can find URLs from /routes/index.js.</p>
+                        <p>Source code is available in <a href='https://github.com/aarne-kyppo/scheduler'>here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='options' class='panel-group' role='tablist' aria-multiselectable='true'>
+            <div class='panel panel-default'>
+                <div id='heading' class='panel-heading' role='tab'>
+                    <h4 class=̈́'panel-title'>
+                        <a data-toggle='collapse' data-parent='#options' href='#optionsbody' aria-expanded='true' aria-controls='optionsbody'>Options</a>
+                    </h4>
+                </div>
+                <div id='optionsbody' class='panel-collapse collapse in'>
+                    <div class='panel-body'>
+                        <form id='groupform'>
+                            <div class='form-group'>
+                                <label for='group'>Group: </label>
+                                <groups></groups>
+                                </br>
+                                <label for='sampledata'>Use sample data</label>
+                                <input type='checkbox' ng-model='use_sample_data'/>
+                              </br>
+                                <label>View:</label>
+                                <button type="button" class="btn" ng-class="{'btn-primary': lessonsctrl.isDayView}" ng-click="lessonsctrl.changeView()">Day</button>
+                                <button type="button" class="btn" ng-class="{'btn-primary': lessonsctrl.isWeekView}" ng-click="lessonsctrl.changeView()">Week</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='timetable container-fluid'>
+          <school-days view='week'></school-days>
+        </div>
+        <script type='text/javascript' src='cordova.js'></script>
+        <script type='text/javascript' src='lib/jquery/dist/jquery.min.js'></script>
+        <script type='text/javascript' src='lib/bootstrap/dist/js/bootstrap.min.js'></script>
+        <script type='text/javascript' src='lib/angular/angular.js'></script>
+        <script type='text/javascript' src='lib/angular-route/angular-route.min.js'></script>
+        <script type='text/javascript' src='lib/moment/moment.js'></script>
+        <script type='text/javascript' src='lib/ScrollToFixed/jquery-scrolltofixed-min.js'></script>
+        <script type='text/javascript' src='lib/lodash/lodash.min.js'></script>
+        <script type='text/javascript' src='js/schoolday.js'></script>
+        <script type='text/javascript' src='js/index.js'></script>
+    </body>
+</html>
